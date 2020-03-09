@@ -9,3 +9,6 @@
 ### Run
     python arquivo.py --serve
     python arquivo.py --send
+    
+### Obs
+    Iniciar o Mosquitto Broker em Serviços
