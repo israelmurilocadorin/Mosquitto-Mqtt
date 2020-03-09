@@ -14,17 +14,17 @@ if sys.version_info[0] == 3:
 else:
     input_func = raw_input
 
-
+# Conectar no servidor
 def on_connect(client, userdata, flags, rc):
     print('Conectado. Resultado: %s' % str(rc))
     result, mid = client.subscribe('/buteco/topico')
     print('Inscrevendo-se no tópico "/buteco/topico" (%d)' % mid)
 
-
+# Informa a conexão
 def on_subscribe(client, userdata, mid, granted_qos):
     print('Inscrito no tópico: %d' % mid)
 
-
+# Mensagens recebidas   
 def on_message(client, userdata, msg):
     print('Mensagem recebida no tópico: %s' % msg.topic)
 
@@ -33,7 +33,7 @@ def on_message(client, userdata, msg):
     else:
         print('Tópico desconhecido.')
 
-
+# Cliente Mqtt que escuta as mensagens
 def loop():
     client = mqtt.Client()
     client.on_connect = on_connect
@@ -42,7 +42,7 @@ def loop():
     client.connect(MQTT_ADDRESS, MQTT_PORT, MQTT_TIMEOUT)
     client.loop_forever()
 
-
+# Cria cliente para enviar as mensagens
 def send_message(msg):
     client = mqtt.Client()
     client.connect(MQTT_ADDRESS, MQTT_PORT, MQTT_TIMEOUT)
