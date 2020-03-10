@@ -7,8 +7,8 @@ http://mosquitto.org/download/
     pip install paho-mqtt
     
 ### Run
-    python arquivo.py --serve
-    python arquivo.py --send
+    python mosquitto.py --serve
+    python mosquitto.py --send
     
 ### Obs
     Iniciar o Mosquitto Broker em Serviços
